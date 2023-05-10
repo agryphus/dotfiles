@@ -53,7 +53,7 @@ C_RESET="%F{reset}"
 RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})'
 err="$?"
 curr_time="%*"
-dir='%(2~|.../%2~|%~)' # 2 deep, or truncation
+dir='%(4~|.../%3~|%~)' # 3 deep, or truncation
 git_info=''
 
 function precmd {
