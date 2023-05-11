@@ -48,6 +48,7 @@ alias history="history 0"     # force zsh to show the complete history
 # Building the prompt
 C_PROMPT="%F{cyan}"
 C_GIT="%F{green}"
+C_CONDA="%F{009}"
 C_DIR="%F{yellow}"
 C_RESET="%F{reset}"
 RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})'
@@ -57,7 +58,12 @@ dir='%(4~|.../%3~|%~)' # 3 deep, or truncation
 git_info=''
 
 function precmd {
-    PROMPT="${C_PROMPT}[${curr_time}${C_DIR}:${dir}${C_PROMPT}]$(parse_git)${C_RESET}$ "
+    PROMPT="${C_PROMPT}[${curr_time}${C_DIR}:${dir}${C_PROMPT}]"
+    extra="$(parse_conda)$(parse_git)"
+    if [ ! -z "$extra" ]; then
+        PROMPT+=$'\n'"$extra"
+    fi
+    PROMPT+="${C_RESET}$ "
 }
 
 function parse_git() {
@@ -96,13 +102,23 @@ function parse_git() {
     fi
 
     # Put together our prompt string
-    git_prompt+="\n${C_GIT}["
+    git_prompt+="${C_GIT}["
     git_prompt+="${ref}:${C_RESET}"
     git_prompt+="${tracking}"
     git_prompt+="${dirty}"
     git_prompt+="${C_GIT}]${C_RESET}"
 
     echo "$git_prompt"
+}
+
+function parse_conda() {
+    env=$CONDA_DEFAULT_ENV
+    if [ -z "$env" ] || [ "$env" = "base" ]; then
+        echo ""
+        return
+    fi
+
+    echo "${C_CONDA}[$env]"
 }
 
 # Config for zsh-syntax-highlighting
