@@ -97,8 +97,8 @@ function parse_git() {
     if [[ "$upstream_ref" ]]; then
         updown=( $(git rev-list --count --left-right "$upstream_ref"...HEAD) )
 
-        [[ ${updown[0]} -gt 0 ]] && tracking+="%F{cyan}-${updown[0]}${C_RESET}:"    # Behind
-        [[ ${updown[1]} -gt 0 ]] && tracking+="%F{magenta}+${updown[1]}${C_RESET}:" # Ahead
+        [[ ${updown[1]} -gt 0 ]] && tracking+="%F{red}-${updown[1]}${C_RESET}:"    # Behind
+        [[ ${updown[2]} -gt 0 ]] && tracking+="%F{magenta}+${updown[2]}${C_RESET}:" # Ahead
     fi
 
     # Put together our prompt string
