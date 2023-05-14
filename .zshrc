@@ -18,7 +18,7 @@ setopt numericglobsort     # Sort filenames numerically when it makes sense
 setopt promptsubst         # Enable command substitution in prompt
 
 # Colors
-alias ls='ls --color=auto --group-directories-first -hN'
+alias ls='ls --color=auto --group-directories-first -hN -A'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
