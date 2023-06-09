@@ -45,6 +45,14 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 alias history="history 0"     # force zsh to show the complete history
 
+# Set gpg agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
+export GPG_TTY=$(tty)
+eval $(gpg-agent --daemon)
+
 # Building the prompt
 C_PROMPT="%F{cyan}"
 C_GIT="%F{green}"
