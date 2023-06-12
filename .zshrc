@@ -4,6 +4,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias python='python3'
+alias clip=/mnt/c/Windows/System32/clip.exe
 
 # Print out all colors
 alias colors='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$"\n"}; done'
