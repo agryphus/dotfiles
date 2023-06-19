@@ -4,6 +4,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias python='python3'
+alias tmux='tmux -f ~/.config/dotfiles/tmux.conf'
 alias clip=/mnt/c/Windows/System32/clip.exe
 
 # Print out all colors
