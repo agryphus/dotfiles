@@ -37,7 +37,7 @@ zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive tab completion
 
 # History configurations
-HISTFILE=~/.zsh_history
+HISTFILE=~/.dotfiles/.zsh_history
 HISTSIZE=1000
 SAVEHIST=2000
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
