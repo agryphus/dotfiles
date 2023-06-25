@@ -35,7 +35,6 @@ SAVEHIST=2000
 alias history="history 0"     # force zsh to show the complete history
 
 export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye
 
 # Building the prompt
 C_PROMPT="%F{cyan}"
